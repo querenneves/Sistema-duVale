@@ -21,6 +21,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.carrinho.compras.model.Usuario;
 import com.carrinho.compras.model.UsuarioLogin;
 import com.carrinho.compras.repository.UsuarioRepository;
+import com.carrinho.compras.service.UsuarioService;
 
 import jakarta.validation.Valid;
 

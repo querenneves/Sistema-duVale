@@ -1,4 +1,4 @@
-package com.carrinho.compras.service;
+package com.carrinho.compras.security;
 
 import java.security.Key;
 import java.util.Date;

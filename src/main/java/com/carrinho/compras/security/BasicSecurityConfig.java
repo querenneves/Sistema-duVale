@@ -17,6 +17,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.carrinho.compras.model.Usuario;
+
+import lombok.Data;
+@Data
 @Configuration
 @EnableWebSecurity
 public class BasicSecurityConfig {
@@ -66,8 +70,8 @@ public class BasicSecurityConfig {
 	                        .requestMatchers(HttpMethod.OPTIONS).permitAll()
 	                        .anyRequest().authenticated())
 	                .authenticationProvider(authenticationProvider())
-	                .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
-	                .httpBasic();
+	                .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);
+	             
 
 	        return http.build();
 

@@ -6,14 +6,18 @@ import java.util.Optional;
 
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import com.carrinho.compras.model.Usuario;
 import com.carrinho.compras.model.UsuarioLogin;
 import com.carrinho.compras.repository.UsuarioRepository;
+import com.carrinho.compras.security.JwtService;
 
+import lombok.Data;
+@Data
 @Service
 public class UsuarioService {
 
@@ -61,7 +65,7 @@ public class UsuarioService {
 		var credenciais = new UsernamePasswordAuthenticationToken(usuarioLogin.get().getUsuario(),
 				usuarioLogin.get().getSenha());
 
-		Authentication authentication = authenticationManager.authenticate(credenciais);
+		org.springframework.security.core.Authentication authentication = authenticationManager.authenticate(credenciais);
 
 		if (authentication.isAuthenticated()) {
 

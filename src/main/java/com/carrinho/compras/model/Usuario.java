@@ -11,7 +11,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
-
 @Data
 @Entity /* gerar tabela banco de dados */
 @Table(name = "tb_usuarios")
@@ -34,4 +33,18 @@ public class Usuario {
 
 	@Size(max = 5000, message = "O link da foto não pode ser maior do que 5000 caracteres")
 	private String foto;
-}
+
+public Usuario(Long id, String nome, String usuario,String senha,String foto) {
+	super();
+	this.id = id;
+	this.nome = nome;
+	this.usuario = usuario;
+	this.senha = senha;
+	this.foto = foto;
+  }
+
+public Usuario() {
+	super();
+} 
+
+    }

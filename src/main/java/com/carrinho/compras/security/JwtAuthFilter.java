@@ -1,4 +1,4 @@
-package com.carrinho.compras.service;
+package com.carrinho.compras.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,13 +14,15 @@ import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.io.IOException;
 import io.jsonwebtoken.security.SignatureException;
+import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
+import lombok.Data;
+@Data
 @Component
-public class JwtAuthFilter {
+public abstract class JwtAuthFilter implements Filter {
 
 	@Autowired
     private JwtService jwtService;
@@ -28,8 +30,7 @@ public class JwtAuthFilter {
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
-    @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException, java.io.IOException {
         String authHeader = request.getHeader("Authorization");
         String token = null;
         String username = null;

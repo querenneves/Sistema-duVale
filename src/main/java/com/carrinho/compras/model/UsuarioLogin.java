@@ -1,5 +1,8 @@
 package com.carrinho.compras.model;
 
+import lombok.Data;
+
+@Data
 public class UsuarioLogin {
 
 	private Long id;
